@@ -6,12 +6,21 @@
     </mat-card-header>
     <mat-card-content>
       <mat-list role="list">
-        <mat-list-item *ngFor="let message of messages" role="listitem">{{message}}</mat-list-item>
+        <mat-list-item *ngFor="let message of messages" role="listitem">
+          <span>
+            {{message}}
+          </span>
+        </mat-list-item>
       </mat-list>
     </mat-card-content>
   </mat-card>
   <section fxLayout>
-    <input matInput ([ngModel])="message" placeholder="Type your message">
-    <button mat-button>Send</button>
+    <mat-form-field>
+      <mat-label>Type your message</mat-label>
+      <input matInput [(ngModel)]="message">
+    </mat-form-field>
+    <button mat-button (click)="addChat()">
+      <mat-icon>send</mat-icon>Send
+    </button>
   </section>
 </section>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatService } from './services/chat.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule } from '@angular/forms';
 
@@ -24,6 +24,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatCardModule,
     MatListModule,
     MatButtonModule,
+    MatIconModule,
+    MatInputModule,
     FlexLayoutModule
   ],
   providers: [ChatService],

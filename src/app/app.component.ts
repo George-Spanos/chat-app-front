@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
 
     this.chatService.receiveChat().subscribe((message: string) => {
       this.messages.push(message);
+      console.log(this.messages);
+      
     });
 
     this.chatService.getUsers().subscribe((users: number) => {
