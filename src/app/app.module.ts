@@ -9,6 +9,7 @@ import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputM
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule } from '@angular/forms';
 const URL = 'https://nestchat.azurewebsites.net/'
+const devUrl = 'http://localhost:3000'
 const config: SocketIoConfig = { url: URL, options: {} };
 
 @NgModule({
