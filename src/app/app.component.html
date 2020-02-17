@@ -17,7 +17,7 @@
   <section fxLayout>
     <mat-form-field>
       <mat-label>Type your message</mat-label>
-      <input matInput [(ngModel)]="message">
+      <input matInput (keydown.enter)="addChat()" [(ngModel)]="message">
     </mat-form-field>
     <button mat-button (click)="addChat()">
       <mat-icon>send</mat-icon>Send

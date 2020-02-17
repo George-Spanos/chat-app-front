@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -14,11 +15,11 @@ export class ChatService {
         this.socket.emit('chat', message);
     }
 
-    receiveChat() {
+    receiveChat(): Observable<string> {
         return this.socket.fromEvent('chat');
     }
 
-    getUsers() {
+    getUsers(): Observable<number> {
         return this.socket.fromEvent('users');
     }
 
