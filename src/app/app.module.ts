@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule } from '@angular/forms';
-
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const URL = 'https://nestchat.azurewebsites.net/'
+const config: SocketIoConfig = { url: URL, options: {} };
 
 @NgModule({
   declarations: [
