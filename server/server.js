@@ -1,6 +1,7 @@
 const express = require('express');
 
-const publicweb = process.env.PUBLICWEB || './dist/publicweb';
+const publicweb = process.env.PUBLICWEB || './';
+const devPath = 'dist'
 const app = express();
 
 app.use(express.static(publicweb));
