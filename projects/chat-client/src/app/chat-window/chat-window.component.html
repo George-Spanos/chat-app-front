@@ -53,5 +53,5 @@
             </mat-card-footer>
         </mat-card>
     </section>
-    <app-online-users [users]="users | async"></app-online-users>
+    <app-online-users *ngIf="isLoggedIn | async" [users]="users | async"></app-online-users>
 </section>
