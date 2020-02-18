@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./projects",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -19,17 +19,14 @@
       "dom"
     ],
     "paths": {
-      "lib-store": [
-        "dist/lib-store/lib-store",
-        "dist/lib-store"
+      "@chat/store": [
+        "lib-domain/src/public-api.ts"
       ],
-      "lib-model": [
-        "dist/lib-model/lib-model",
-        "dist/lib-model"
+      "@chat/shared": [
+        "lib-shared/src/public-api.ts"
       ],
-      "lib-domain": [
-        "dist/lib-domain/lib-domain",
-        "dist/lib-domain"
+      "@chat/model": [
+        "lib-model/src/public-api.ts"
       ]
     }
   },

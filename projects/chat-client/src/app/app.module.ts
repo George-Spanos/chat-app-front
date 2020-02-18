@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule, SharedModule, SOCKETS_CONFIG } from '@chat/shared';
+import { SocketIoModule } from 'ngx-socket-io';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatService } from './services/chat.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout'
-import { FormsModule } from '@angular/forms';
-const URL = 'https://nestchat.azurewebsites.net/'
-const devUrl = 'http://localhost:3000'
-const config: SocketIoConfig = { url: URL, options: {} };
+
 
 @NgModule({
   declarations: [
@@ -18,16 +15,12 @@ const config: SocketIoConfig = { url: URL, options: {} };
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    SocketIoModule.forRoot(config),
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    FlexLayoutModule
+    SocketIoModule.forRoot(SOCKETS_CONFIG),
+    MaterialModule,
+    SharedModule,
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]
