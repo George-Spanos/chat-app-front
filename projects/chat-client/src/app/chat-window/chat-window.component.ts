@@ -49,20 +49,22 @@ export class ChatWindowComponent {
     }
 
     addChat() {
-        this.store.select('user').pipe(
-            take(1),
-            tap((user) => {
-                const newMessage: Message = {
-                    content: this.message,
-                    senderName: user.firstName,
-                    timestamp: new Date(),
-                    senderImg: user.imageURL
-                }
-                this.messages.push(newMessage);
-                this.chatService.sendChat(newMessage);
-                this.message = '';
-            })
-        ).subscribe()
+        if (this.isLoggedIn) {
+            this.store.select('user').pipe(
+                take(1),
+                tap((user) => {
+                    const newMessage: Message = {
+                        content: this.message,
+                        senderName: user.firstName,
+                        timestamp: new Date(),
+                        senderImg: user.imageURL
+                    }
+                    this.messages.push(newMessage);
+                    this.chatService.sendChat(newMessage);
+                    this.message = '';
+                })
+            ).subscribe()
+        }
     }
     private triggerNewMessageTitle(message: Message) {
         const notificationText = `${message.senderName} sent a new Message`;
