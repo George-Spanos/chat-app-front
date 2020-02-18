@@ -3,33 +3,32 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "chat-front": {
+    "chat-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/chat-client",
+      "sourceRoot": "projects/chat-client/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "index": "projects/chat-client/src/index.html",
+            "main": "projects/chat-client/src/main.ts",
+            "polyfills": "projects/chat-client/src/polyfills.ts",
+            "tsConfig": "projects/chat-client/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/chat-client/src/favicon.ico",
+              "projects/chat-client/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "projects/chat-client/src/styles.scss"
             ],
             "scripts": []
           },
@@ -37,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "environments/environment.ts",
+                  "with": "environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -67,34 +66,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "chat-front:build"
+            "browserTarget": "chat-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "chat-front:build:production"
+              "browserTarget": "chat-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chat-front:build"
+            "browserTarget": "chat-client:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "projects/chat-client/src/test.ts",
+            "polyfills": "projects/chat-client/src/polyfills.ts",
+            "tsConfig": "projects/chat-client/tsconfig.spec.json",
+            "karmaConfig": "projects/chat-client/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/chat-client/src/favicon.ico",
+              "projects/chat-client/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "projects/chat-client/src/styles.scss"
             ],
             "scripts": []
           }
@@ -103,9 +101,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "projects/chat-client/tsconfig.app.json",
+              "projects/chat-client/tsconfig.spec.json",
+              "projects/chat-client/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -115,19 +113,139 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "chat-front:serve"
+            "protractorConfig": "projects/chat-client/e2e/protractor.conf.js",
+            "devServerTarget": "chat-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "chat-front:serve:production"
+              "devServerTarget": "chat-client:serve:production"
             }
+          }
+        }
+      }
+    },
+    "lib-store": {
+      "projectType": "library",
+      "root": "projects/lib-store",
+      "sourceRoot": "projects/lib-store/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-store/tsconfig.lib.json",
+            "project": "projects/lib-store/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-store/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-store/src/test.ts",
+            "tsConfig": "projects/lib-store/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-store/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-store/tsconfig.lib.json",
+              "projects/lib-store/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lib-model": {
+      "projectType": "library",
+      "root": "projects/lib-model",
+      "sourceRoot": "projects/lib-model/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-model/tsconfig.lib.json",
+            "project": "projects/lib-model/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-model/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-model/src/test.ts",
+            "tsConfig": "projects/lib-model/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-model/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-model/tsconfig.lib.json",
+              "projects/lib-model/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lib-domain": {
+      "projectType": "library",
+      "root": "projects/lib-domain",
+      "sourceRoot": "projects/lib-domain/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-domain/tsconfig.lib.json",
+            "project": "projects/lib-domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-domain/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-domain/src/test.ts",
+            "tsConfig": "projects/lib-domain/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-domain/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-domain/tsconfig.lib.json",
+              "projects/lib-domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "chat-front",
+  "defaultProject": "chat-client",
   "cli": {
     "analytics": "460d8d37-d4e7-4558-9b25-b777ef6190ed"
   }
