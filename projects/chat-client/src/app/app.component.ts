@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ChatService } from './services/chat.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AppState } from '@chat/store';
+import { Store } from '@ngrx/store';
+import { interval } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,32 +11,15 @@ import { ChatService } from './services/chat.service';
 })
 export class AppComponent implements OnInit {
 
-  public users: number = 0;
-  public message: string = '';
-  public messages: string[] = [];
-
-  constructor(private chatService: ChatService) {
+  constructor(private store: Store<AppState>) {
 
   }
 
   ngOnInit() {
-
-    this.chatService.receiveChat().subscribe((message: string) => {
-      this.messages.push(message);
-      console.log(this.messages);
-      
-    });
-
-    this.chatService.getUsers().subscribe((users: number) => {
-      this.users = users;
-    });
-
+    interval(3000).pipe(
+      switchMap(() =>
+        this.store.select('user').pipe(tap(c => console.log(c)))
+      )
+    ).subscribe()
   }
-
-  addChat() {
-    this.messages.push(this.message);
-    this.chatService.sendChat(this.message);
-    this.message = '';
-  }
-
 }

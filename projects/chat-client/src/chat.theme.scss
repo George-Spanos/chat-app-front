@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$chat-app-primary: mat-palette($mat-indigo, 100);
+$chat-app-accent: mat-palette($mat-blue);
+$chat-app-warn: mat-palette($mat-red);
+
+// $button-accent-color: mat-palette($mat-gray, 800);
+// $mat-button-theme: mat-light-theme($chat-app-primary, $button-accent-color);
+$chat-app-theme: mat-light-theme($chat-app-primary, $chat-app-accent, $chat-app-warn);
+@include angular-material-theme($chat-app-theme);
+// @include mat-checkbox-theme($mat-button-theme);

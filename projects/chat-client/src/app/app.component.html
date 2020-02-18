@@ -1,26 +1,10 @@
-<section class="container">
-  <h1>Live Chat</h1>
-  <mat-card>
-    <mat-card-header>
-      Number of Connected Users {{users}}
-    </mat-card-header>
-    <mat-card-content>
-      <mat-list role="list">
-        <mat-list-item *ngFor="let message of messages" role="listitem">
-          <span>
-            {{message}}
-          </span>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
-  <section fxLayout>
-    <mat-form-field>
-      <mat-label>Type your message</mat-label>
-      <input matInput (keydown.enter)="addChat()" [(ngModel)]="message">
-    </mat-form-field>
-    <button mat-button (click)="addChat()">
-      <mat-icon>send</mat-icon>Send
-    </button>
-  </section>
-</section>
+
+<mat-sidenav-container fxLayout="row" *ngIf="true">
+  <mat-sidenav fxLayout="column" fxLayoutAlign="start center" mode="side" opened>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="main-content flex-col grow">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

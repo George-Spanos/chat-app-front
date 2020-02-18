@@ -1,0 +1,37 @@
+<section class="container" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="1rem" class="m-1">
+    <button mat-raised-button color="accent" (click)="userService.signIn()" *ngIf="!(isLoggedIn | async)">
+        Login with Google
+    </button>
+    <mat-card>
+        <mat-card-header>
+            Number of Connected Users {{users}}
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let message of messages" role="listitem">
+                    <section fxLayout fxLayoutAlign="space-between center" fxFlex="grow">
+                        <section fxLayout fxLayoutAlign="start center">
+                            <img class="sender-image mr-1" [src]="message.senderImg" />
+                            <div class="sender-name mr-1">{{message.senderName}}:</div>
+                            <div class="content mr-1">
+                                {{message.content}}
+                            </div>
+                        </section>
+                        <div class="timestamp" fxFlexAlign="end">
+                            {{message.timestamp | date:'HH:mm:ss'}}
+                        </div>
+                    </section>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <section fxLayout>
+        <mat-form-field>
+            <mat-label>Type your message</mat-label>
+            <input matInput (keydown.enter)="addChat()" [(ngModel)]="message">
+        </mat-form-field>
+        <button mat-button (click)="addChat()" [disabled]="!(isLoggedIn | async)">
+            <mat-icon>send</mat-icon>Send
+        </button>
+    </section>
+</section>

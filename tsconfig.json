@@ -20,6 +20,9 @@
     ],
     "paths": {
       "@chat/store": [
+        "lib-store/src/public-api.ts"
+      ],
+      "@chat/domain": [
         "lib-domain/src/public-api.ts"
       ],
       "@chat/shared": [

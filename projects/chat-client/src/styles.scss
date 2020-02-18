@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+@import "./chat.theme.scss";
+@import "../../../styles/_typography";
+@import "../../../styles/_theming";
+@import "../../../styles/_spacing";
+@import "../../../styles/_material-fixes";
 html,
 body {
   height: 100%;

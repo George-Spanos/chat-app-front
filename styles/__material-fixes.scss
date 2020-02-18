@@ -1,0 +1,38 @@
+
+.material-dark-background {
+  background-color: $material-dark-color;
+}
+.material-accent-background {
+  background-color: $material-accent-color;
+}
+.mat-simple-snackbar-action {
+  color: rgb(199, 196, 2);
+}
+
+.snackbar-success {
+  background-color: rgb(78, 78, 78);
+  color: white;
+}
+.mat-expansion-panel-body {
+  padding: 0 1rem 1rem 0.9rem !important;
+}
+.snackbar-error {
+  background-color: rgb(136, 0, 0);
+  color: white;
+}
+.material-icons.md {
+  transform: scale(2);
+}
+.material-icons.lg {
+  transform: scale(3);
+}
+.material-icons.xl {
+  transform: scale(4);
+}
+.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label:not(.mat-empty):not(.mat-form-field-empty) {
+  font-size: 16px;
+}
+.mat-list-item-content{
+  flex-grow: 1;
+}

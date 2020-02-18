@@ -7,22 +7,28 @@ import { SocketIoModule } from 'ngx-socket-io';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatService } from './services/chat.service';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
+import { UserService } from './services/user.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from '@chat/store';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatWindowComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    StoreModule.forRoot(appReducers),
     SocketIoModule.forRoot(SOCKETS_CONFIG),
     MaterialModule,
     SharedModule,
   ],
-  providers: [ChatService],
+  providers: [ChatService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
