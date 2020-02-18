@@ -6,8 +6,6 @@ const UserReducer = createReducer(
     UserInitialState,
     on(UserActions.SetCurrent, (state, user) => {
         // set current user
-        console.log('should set current user')
-        console.log(user)
         return { ...state, ...user }
     })
 )

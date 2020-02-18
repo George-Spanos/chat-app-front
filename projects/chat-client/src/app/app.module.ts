@@ -11,12 +11,16 @@ import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { UserService } from './services/user.service';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from '@chat/store';
+import { OnlineUsersComponent } from './online-users/online-users.component';
+import { ActiveUserComponent } from './online-users/active-user/active-user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    OnlineUsersComponent,
+    ActiveUserComponent
   ],
   imports: [
     BrowserModule,

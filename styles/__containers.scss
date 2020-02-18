@@ -1,0 +1,13 @@
+.timestamp {
+  font-size: 10px;
+  color: darkgray;
+}
+.sender-image {
+  width: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.sender-name {
+  opacity: 0.9;
+  font-style: italic;
+}

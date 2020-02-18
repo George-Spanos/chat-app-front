@@ -1,0 +1,3 @@
+<section class="users-box mt-1" fxLayout="column" fxLayoutGap="1rem">
+    <app-active-user *ngFor="let user of users" [imageURL]="user.imageURL" [fullName]="user.name"></app-active-user>
+</section>

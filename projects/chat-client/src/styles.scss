@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./chat.theme.scss";
+@import "../../../styles/_containers";
 @import "../../../styles/_typography";
 @import "../../../styles/_theming";
 @import "../../../styles/_spacing";
@@ -12,21 +13,17 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.container {
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-}
+
 $white: #fff;
 $google-blue: #4285f4;
-$button-active-blue: #1669F2;
+$button-active-blue: #1669f2;
 
 .google-btn {
   width: 184px;
   height: 42px;
   background-color: $google-blue;
   border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
   .google-icon-wrapper {
     position: absolute;
     margin-top: 1px;

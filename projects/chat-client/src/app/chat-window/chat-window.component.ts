@@ -1,12 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Message } from '@chat/model';
-import { AppState, isLoggedIn } from '@chat/store';
+import { AppState, isLoggedIn, SetActiveUsers } from '@chat/store';
 import { Store } from '@ngrx/store';
 import { Observable, interval, timer } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { take, tap, map } from 'rxjs/operators';
 import { ChatService } from '../services/chat.service';
 import { UserService } from '../services/user.service';
+import { ActiveUser } from 'lib-model/src/lib/User/ActiveUser';
 @Component({
     selector: 'app-chat-window',
     templateUrl: './chat-window.component.html',
@@ -14,7 +15,7 @@ import { UserService } from '../services/user.service';
 })
 export class ChatWindowComponent {
     @ViewChild('audioEl', { static: true }) audioElement: ElementRef;
-    public users: number = 0;
+    public users: Observable<ActiveUser[]>;
     public message: string = '';
     public messages: Message[] = [];
     private hasNewMessage = false;
@@ -33,17 +34,27 @@ export class ChatWindowComponent {
     ngOnInit() {
         this.title = this.titleService.getTitle();
         this.isLoggedIn = this.store.select(isLoggedIn);
+        this.users = this.store.select('activeUsers')
+            .pipe(
+                map(state => Array.from(new Set(state.users.map(user => user.imageURL))).map(url =>
+                    ({
+                        name: state.users.find(user => user.imageURL === url).name,
+                        imageURL: url
+                    })
+                )
+                ))
+            ;
         this.titleService.setTitle('My chat App');
         this.chatService.receiveChat()
             .subscribe(message => {
                 this.triggerNewMessageTitle(message);
                 if (!this.muted) this.playAudio();
                 this.messages.push({ content: message.content, timestamp: message.timestamp, senderName: message.senderName, senderImg: message.senderImg });
-                console.log(this.messages);
             });
 
-        this.chatService.getUsers().subscribe((users: number) => {
-            this.users = users;
+        this.chatService.getUsers().subscribe((users) => {
+            // console.log(users)
+            this.store.dispatch(SetActiveUsers({ users }))
         });
 
     }
