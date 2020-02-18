@@ -1,11 +1,19 @@
 <section class="container" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="1rem" class="m-1">
-    <button mat-raised-button color="accent" (click)="userService.signIn()" *ngIf="!(isLoggedIn | async)">
+    <div class="google-btn" *ngIf="!(isLoggedIn | async)" (click)="userService.signIn()">
+        <div class="google-icon-wrapper">
+            <img class="google-icon"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+        </div>
+        <p class="btn-text"><b>Sign in with google</b></p>
+    </div>
+    <!-- <button mat-raised-button color="accent" id="my-signin2" (click)="userService.signIn()"
+        *ngIf="!(isLoggedIn | async)">
         Login with Google
-    </button>
+    </button> -->
     <mat-checkbox [(ngModel)]="muted">
         Mute
     </mat-checkbox>
-    <audio  src="../../assets/when.mp3" #audioEl></audio>
+    <audio src="../../assets/when.mp3" #audioEl></audio>
     <mat-card>
         <mat-card-header>
             Number of Connected Users {{users}}
