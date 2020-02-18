@@ -11,3 +11,7 @@
     opacity: 0.9;
     font-style: italic;
 }
+mat-card {
+  max-height: 80vh;
+  overflow-y: scroll;
+}
