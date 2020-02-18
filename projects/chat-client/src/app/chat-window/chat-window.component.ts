@@ -49,7 +49,7 @@ export class ChatWindowComponent {
     }
 
     addChat() {
-        if (this.isLoggedIn) {
+        if (this.isLoggedIn && this.message.length) {
             this.store.select('user').pipe(
                 take(1),
                 tap((user) => {
