@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputModule, MatSidenavModule } from '@angular/material';
+import { MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatInputModule, MatSidenavModule, MatCheckboxModule } from '@angular/material';
 
 
 const MaterialSubmodules = [
@@ -8,7 +8,8 @@ const MaterialSubmodules = [
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule
 ]
 
 @NgModule({

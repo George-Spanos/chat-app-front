@@ -2,6 +2,10 @@
     <button mat-raised-button color="accent" (click)="userService.signIn()" *ngIf="!(isLoggedIn | async)">
         Login with Google
     </button>
+    <mat-checkbox [(ngModel)]="muted">
+        Mute
+    </mat-checkbox>
+    <audio  src="../../assets/when.mp3" #audioEl></audio>
     <mat-card>
         <mat-card-header>
             Number of Connected Users {{users}}
